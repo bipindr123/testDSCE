@@ -20,5 +20,4 @@ from Publications import urls
 urlpatterns = [
     url(r'^', include('Publications.urls')),
     url(r'^admin/', admin.site.urls),
-
 ]
