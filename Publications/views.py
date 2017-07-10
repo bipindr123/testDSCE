@@ -6,8 +6,10 @@ from .models import publication
 # Create your views here.
 def index(request):
     all_publications = publication.objects.all()
+    total = all_publications.count()
     context = {
         'all_publications': all_publications,
+        'total':total,
     }
     return render(request, 'publications/index.html', context)
 
@@ -26,7 +28,10 @@ def bob(request):
             all_publications = publication.objects.filter(title__startswith=search_query, dept__startswith=search_dept,year__year=int(search_year))
         # Do whatever you need with the word the user looked for
         # Your code
+    total = all_publications.count()
     context = {
         'all_publications': all_publications,
+        'total': total,
     }
+
     return render(request, 'publications/index.html', context)

@@ -29,6 +29,7 @@
                         <ul id="dropdown-menu1" class="dropdown-menu" role="menu">
                             <li><a href="#Computer Science">Computer Science</a></li>
                             <li><a href="#Mechanical">Mechanical</a></li>
+                            <li><a href="#Electronics">Electronics and Communication</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Anything</a></li>
                         </ul>
@@ -39,8 +40,8 @@
                             <span id="search_date">Year</span> <span class="caret"></span>
                         </button>
                         <ul id="dropdown-menu2" class="dropdown-menu" role="menu">
-                            <li><a href="#2017"> 2017</a></li>
-                            <li><a href="#2016"> 2016</a></li>
+                            <li><a href="#2017">2017</a></li>
+                            <li><a href="#2016">2016</a></li>
                             <li><a href="#2015">2015</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Anything</a></li>
@@ -63,7 +64,8 @@
 <a href="/">
     <h3>Publications</h3>
 </a>
-
+<span class="label label-default">Total number of Publications: {{ total }}</span>
+<br>
 <br>
 {% if all_publications %}
     <div class="table-responsive">
@@ -98,17 +100,6 @@
     <br>
     <br>
 {% endif %}
-
-<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Department
-        <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-        <li><a href="#Computer">Computer Science</a></li>
-        <li><a href="#">Mechanical</a></li>
-        <li><a href="#">Electronics and Communication</a></li>
-    </ul>
-</div>
-
 
 <script src={% static 'assets/js/jquery.min.js' %}></script>
 <script src={% static 'assets/bootstrap/js/bootstrap.min.js' %}></script>
