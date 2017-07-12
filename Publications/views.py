@@ -24,10 +24,12 @@ def bob(request):
         search_query = request.GET.get('search_box', None)
         search_dept = request.GET.get('search_param1', None)
         search_year = request.GET.get('search_param2', None)
+        search_type = request.GET.get('search_param3',None)
+        search_nationality = request.GET.get('search_param4', None)
         if(search_year==''):
-            all_publications = publication.objects.filter(title__contains=search_query, dept__startswith=search_dept)
+            all_publications = publication.objects.filter(title__contains=search_query, dept__startswith=search_dept, type__contains= search_type, nationality__contains= search_nationality)
         else:
-            all_publications = publication.objects.filter(title__contains=search_query, dept__startswith=search_dept,year__year=int(search_year))
+            all_publications = publication.objects.filter(title__contains=search_query, dept__startswith=search_dept,year__year=int(search_year), type__contains=search_type, nationality__contains= search_nationality)
         # Do whatever you need with the word the user looked for
         # Your code
     total = all_publications.count()

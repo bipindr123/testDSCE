@@ -17,7 +17,11 @@
         <div style="font-size: 13px">
             <label>{{ i.author }}</label>
             <br>
-            <label>{{ i.Journal_name }} {{ i.year }}</label>
+            {% if i.page_no %}
+                <label>{{ i.Journal_name }}, ({{ i.volume }}), {{ i.page_no }}, {{ i.year }}</label>
+            {% else %}
+                <label>{{ i.Journal_name }}, {{ i.year }}</label>
+            {% endif %}
         </div>
         <br>
     </div>
