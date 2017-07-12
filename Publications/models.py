@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class publication(models.Model):
-    dept = models.CharField(max_length=50)
-    title = models.CharField(max_length=50)
-    author = models.CharField(max_length=50)
-    Journal_name =models.CharField(max_length=50)
+    dept = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    Journal_name =models.CharField(max_length=100)
     year = models.DateField()
 
     def __str__(self):

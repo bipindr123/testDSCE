@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <style type="text/css"></style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Manager</title>
     {% load staticfiles %}
@@ -12,7 +13,7 @@
 
 <body>
 
-<h1 align="center">Research Management</h1>
+<h1 align="center">DSCE Research Management Software</h1>
 <hr>
 <br>
 <div class="container">
@@ -100,10 +101,17 @@
     <br>
     <br>
 {% endif %}
+<button type="button" class="btn btn-warning" onclick=" window.location.href='/print'">
+    PRINT
+</button>
+<br>
+<br>
+<br>
+<div class="footer">Developed By Bipin D R</div>
+<div class="footer"> Department of Computer Science Engineering </div>
 
 <script src={% static 'assets/js/jquery.min.js' %}></script>
 <script src={% static 'assets/bootstrap/js/bootstrap.min.js' %}></script>
-
 </body>
 
 <script>
