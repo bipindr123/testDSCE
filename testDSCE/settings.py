@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'phdstatus.apps.PhdstatusConfig',
     'Publications.apps.PublicationsConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -7,28 +7,18 @@
     <title>print</title>
 </head>
 &emsp; Title
-
 </div>
 <hr>
 {% for i in all_publications %}
     <div style="margin-left: 10px; font-family: 'Arial Black'">
-        <label>{{ i.title }}</label>
-        <br>
         <div style="font-size: 13px">
-            <label>{{ i.author }}</label>
-            <br>
-            {% if i.page_no %}
-                <label>{{ i.Journal_name }}, ({{ i.volume }}), {{ i.page_no }}, {{ i.year }}</label>
-            {% else %}
-                <label>{{ i.Journal_name }}, {{ i.year }}</label>
-            {% endif %}
+            <label> {{ i.author }}, "{{ i.title }}", {{ i.Journal_name }}, {{ i.volume }}), {{ i.page_no }}, {{ i.year }}, {{ i.citations }}</label>
         </div>
         <br>
     </div>
 {% endfor %}
 </body>
 <script>
-
     $(document).ready(function () {
         window.print()
     });

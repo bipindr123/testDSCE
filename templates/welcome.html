@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+          integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Manager</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body>
+
+<h1 align="center">Research Management Software</h1>
+<hr>
+<br>
+<h2>Choose Section</h2>
+<br>
+<div a>
+    <br>
+    <div class="row">
+        <div class="card card-inverse card-primary col-md-4  text-center"
+             onclick=" window.location.href='/publications' ">
+            <div class="card-block">
+                <blockquote class="card-blockquote">
+                    PUBLICATIONS
+                </blockquote>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card card-inverse card-success col-md-4 text-center"
+             onclick=" window.location.href='/phdstatus' ">
+            <div class="card-block">
+                <blockquote class="card-blockquote">
+                    Ph.D Status
+                </blockquote>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card card-inverse card-info col-md-4 text-center" onclick=" window.location.href='/phdstatus' ">
+            <div class="card-block">
+                <blockquote class="card-blockquote">
+                    Faculty Projects
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

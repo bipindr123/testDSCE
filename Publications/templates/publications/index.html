@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <style type="text/css"></style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Manager</title>
+    <title>DSCE Research Manager</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
@@ -18,7 +18,7 @@
 <br>
 
 <div class="container">
-    <form type="get" action="bob" style="margin: 0">
+    <form type="get" action="/publications/bob" style="margin: 0">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2">
                 <div class="input-group">
@@ -29,9 +29,24 @@
                             <span id="search_dept">Dept</span> <span class="caret"></span>
                         </button>
                         <ul id="dropdown-menu1" class="dropdown-menu" role="menu">
-                            <li><a href="#Computer Science">Computer Science</a></li>
-                            <li><a href="#Mechanical">Mechanical</a></li>
-                            <li><a href="#Electronics">Electronics and Communication</a></li>
+                            <li><a href="#Aeronautical">Aeronautical Engineering</a></li>
+                            <li><a href="#Automobile">Automobile Engineering</a></li>
+                            <li><a href="#Biotechnology">Biotechnology</a></li>
+                            <li><a href="#Chemical">Chemical Engineering</a></li>
+                            <li><a href="#Computer">Computer Science Engineering</a></li>
+                            <li><a href="#Mechanical">Mechanical Engineering</a></li>
+                            <li><a href="#Electronics">Electronics & Communication Engineering</a></li>
+                            <li><a href="#Civil">Civil Engineering</a></li>
+                            <li><a href="#Construction Technology">Construction Technology & Management</a></li>
+                            <li><a href="#Electrical">Electrical & Electronics Engineering</a></li>
+                            <li><a href="#Industrial">Industrial Engineering & Management</a></li>
+                            <li><a href="#Information Science">Information Science</a></li>
+                            <li><a href="#Electronics & Instrumentation">Electronics & Instrumentation</a></li>
+                            <li><a href="#Medical Electronics">Medical Electronics Engineerin</a></li>
+                            <li><a href="#Telecommunication">Telecommunication Engineering</a></li>
+                            <li><a href="#Mathematics">Mathematics Department></a></li>
+                            <li><a href="#Chemistry">Chemistry Department</a></li>
+                            <li><a href="#Physics">Physics Department</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Anything</a></li>
                         </ul>
@@ -44,9 +59,16 @@
                             <li><a href="#2017">2017</a></li>
                             <li><a href="#2016">2016</a></li>
                             <li><a href="#2015">2015</a></li>
-                            <li><a href="#2015">2014</a></li>
-                            <li><a href="#2015">2013</a></li>
-                            <li><a href="#2015">2012</a></li>
+                            <li><a href="#2014">2014</a></li>
+                            <li><a href="#2013">2013</a></li>
+                            <li><a href="#2012">2012</a></li>
+                            <li><a href="#2011">2011</a></li>
+                            <li><a href="#2010">2010</a></li>
+                            <li><a href="#2009">2009</a></li>
+                            <li><a href="#2008">2008</a></li>
+                            <li><a href="#2007">2007</a></li>
+                            <li><a href="#2007">2006</a></li>
+                            <li><a href="#2005">2005</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Anything</a></li>
                         </ul>
@@ -92,7 +114,7 @@
     </form>
 </div>
 
-<a href="/">
+<a href="/publications">
     <h3>Publications</h3>
 </a>
 <span class="label label-default">Total number of Publications: {{ total }}</span>
@@ -105,23 +127,24 @@
             <tr>
                 <th>Sl.</th>
                 <th>Title of paper</th>
-                <th>Author</th>
+                <th>Authors</th>
                 <th>Journal/ Conference</th>
                 <th>Department</th>
                 <th>Year</th>
-                <th>Nationality</th>
+                <th>Impact Factor</th>
             </tr>
             </thead>
             <tbody>
             {% for i in all_publications %}
                 <tr>
-                    <td>{{ i.id }}</td>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ i.title }}</td>
                     <td>{{ i.author }}</td>
                     <td>{{ i.type.capitalize }}: {{ i.Journal_name }}</td>
                     <td>{{ i.dept }}</td>
                     <td>{{ i.year }}</td>
-                    <td>{{ i.nationality }}</td>
+                    <td>{{ i.impact_factor }}</td>
+
                 </tr>
             {% endfor %}
             </tbody>
@@ -133,7 +156,7 @@
     <br>
     <br>
 {% endif %}
-<button type="button" class="btn btn-warning" onclick=" window.location.href='/print'">
+<button type="button" class="btn btn-warning" onclick=" window.location.href='/publications/print'">
     PRINT
 </button>
 <br>

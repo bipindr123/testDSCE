@@ -11,6 +11,9 @@ class publication(models.Model):
     page_no = models.CharField(max_length=50,blank=True)
     volume = models.IntegerField(blank=True)
     year = models.DateField()
+    impact_factor = models.CharField(max_length=200)
+    citations = models.CharField(max_length=10)
+
 
     def __str__(self):
         return self.title + ' - ' + self.author
