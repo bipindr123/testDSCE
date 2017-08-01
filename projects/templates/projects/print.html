@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>print</title>
+</head>
+&emsp; Title
+</div>
+<hr>
+{% for i in all_publications %}
+    <div style="margin-left: 10px; font-family: 'Arial Black'">
+        <div style="font-size: 13px">
+            <label> {{ i.author }}, "{{ i.title }}", {{ i.Journal_name }}, {{ i.volume }}), {{ i.page_no }}, {{ i.year }}, {{ i.citations }}</label>
+        </div>
+        <br>
+    </div>
+{% endfor %}
+</body>
+<script>
+    $(document).ready(function () {
+        window.print()
+    });
+</script>
+
+</html>

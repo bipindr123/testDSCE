@@ -1,0 +1,17 @@
+body {
+    margin: 100px;
+}
+
+@media (max-width: 767px) {
+    body {
+        margin: 10px;
+    }
+}
+
+.footer {
+    position: static;
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+}
+
