@@ -1,14 +1,14 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import PhdStatus, WorkDetailsTable, ComprehensiveTable, WorkshopsTable, PublicationsTable, TrainingTable, \
+from .models import PhdStatus, WorkStatusTable, ComprehensiveTable, WorkshopsTable, TrainingTable, \
     FundedProjectsTable
 
 admin.site.site_header = 'DSCE Research Management Administration'
 
 
-class WorkDetailsInline(admin.TabularInline):
-    model = WorkDetailsTable
+class WorkStatusTableInline(admin.TabularInline):
+    model = WorkStatusTable
     extra = 1
 
 class ComprehensiveTableInline(admin.TabularInline):
@@ -20,10 +20,6 @@ class WorkshopsTableInline(admin.TabularInline):
     model = WorkshopsTable
     extra = 1
 
-
-class PublicationsTableInline(admin.TabularInline):
-    model = PublicationsTable
-    extra = 1
 
 
 class TrainingTableInline(admin.TabularInline):
@@ -37,9 +33,10 @@ class FundedProjectsTableInline(admin.TabularInline):
 
 
 class PhdstatusAdmin(admin.ModelAdmin):
+    radio_fields = {"synopsys": admin.HORIZONTAL}
     fields = (
-        'name', 'dept', 'guide', 'uni', 'year', 'other')
+        'name','synopsys', 'dept', 'guide', 'uni', 'year', 'other')
 
-    inlines = [WorkDetailsInline,ComprehensiveTableInline,PublicationsTableInline,WorkshopsTableInline,TrainingTableInline,FundedProjectsTableInline]
+    inlines = [WorkStatusTableInline,ComprehensiveTableInline,WorkshopsTableInline,TrainingTableInline,FundedProjectsTableInline]
 
 admin.site.register(PhdStatus, PhdstatusAdmin)

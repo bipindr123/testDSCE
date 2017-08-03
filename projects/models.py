@@ -5,6 +5,8 @@ from django.db import models
 
 class Project(models.Model):
     dept = models.CharField("Department",max_length=50)
+    status = models.CharField("status", max_length=50,
+                              choices=[('Completed', 'Completed'), ('OnGoing', 'OnGoing')])
     funding_agency = models.CharField("Funding Agency",max_length=50)
     pi_designation = models.CharField("PI and Designation",max_length=50)
     co_pi_designation = models.CharField("Co-PI and Designation",max_length=50)

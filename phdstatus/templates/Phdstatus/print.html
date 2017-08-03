@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <style type="text/css"></style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHD Statuses</title>
+    <title>Ph.D Statuses</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
@@ -25,9 +25,11 @@
 <body>
 
 <div>
-    <strong style="font-size: large">Name: {{ f_status.name }}</strong>
+    <strong style="font-size: large">Research Scholar Name: {{ f_status.name }}</strong>
     <ul class="list-unstyled list-group-item-success">
         <li><strong> Department:</strong> {{ f_status.dept }}</li>
+        <br>
+    <li><strong> Status:</strong> {{ f_status.status }}</li>
         <br>
         <li><strong> Guide:</strong> {{ f_status.guide }}</li>
         <br>
@@ -35,70 +37,64 @@
         <br>
         <li><strong> Year of registration:</strong> {{ f_status.year.year }}</li>
         <br>
-        <li><strong> Details of work:</strong></li>
+        <li><strong>Synopsys: {{ f_status.synopsys }}</strong></li>
+        <br>
+        <li><strong>Course Work Status:</strong></li>
 
         <table>
             <tr>
                 <th>Sl.No</th>
                 <th>Title</th>
-                <th>Duration</th>
+                <th>Completed status</th>
             </tr>
-            {% for j in f_status.workdetailstable_set.all %}
+            {% for j in f_status.workstatustable_set.all %}
                 <tr>
                     <td> {{ forloop.counter }} </td>
                     <td> {{ j.title }} </td>
-                    <td> {{ j.duration }} </td>
+                    <td> {{ j.status }} </td>
                 </tr>
             {% endfor %}
         </table>
         <br>
+
         <li><strong> Comprehensive viva voce:</strong></li>
 
         <table>
             <tr>
                 <th>Sl.No</th>
                 <th>Title</th>
-                <th>Duration</th>
+                <th>Status</th>
             </tr>
             {% for j in f_status.comprehensivetable_set.all %}
                 <tr>
                     <td> {{ forloop.counter }} </td>
                     <td> {{ j.title }} </td>
-                    <td> {{ j.duration }} </td>
+                    <td> {{ j.status }} </td>
                 </tr>
             {% endfor %}
         </table>
         <br>
-        <li><strong> Publications related to research topic:</strong></li>
+        <li><strong>Click here for <a
+                href="/publications/bob?search_param1=&search_param2=&search_param3=&search_param4=&search_box={{ f_status.name }}">Publications
+            related to research topic</a></strong></li>
+
+
+        <br>
+        <li><strong> Workshops/seminar/conference attended:</strong></li>
 
         <table>
             <tr>
                 <th>Sl.No</th>
                 <th>Title</th>
                 <th>Duration</th>
-            </tr>
-            {% for j in f_status.publicationstable_set.all %}
-                <tr>
-                    <td> {{ forloop.counter }} </td>
-                    <td> {{ j.title }} </td>
-                    <td> {{ j.duration }} </td>
-                </tr>
-            {% endfor %}
-        </table>
-        <br>
-        <li><strong> Workshops/seminar/conference:</strong></li>
-
-        <table>
-            <tr>
-                <th>Sl.No</th>
-                <th>Title</th>
-                <th>Duration</th>
+                <th>Details</th>
             </tr>
             {% for j in f_status.workshopstable_set.all %}
                 <tr>
                     <td> {{ forloop.counter }} </td>
                     <td> {{ j.title }} </td>
                     <td> {{ j.duration }} </td>
+                    <td> {{ j.details }}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -110,30 +106,38 @@
                 <th>Sl.No</th>
                 <th>Title</th>
                 <th>Duration</th>
+                <th>Details</th>
             </tr>
             {% for j in f_status.trainingtable_set.all %}
                 <tr>
                     <td> {{ forloop.counter }} </td>
                     <td> {{ j.title }} </td>
                     <td> {{ j.duration }} </td>
+                    <td> {{ j.details }}</td>
                 </tr>
             {% endfor %}
         </table>
         <br>
-        <li><strong> Any funded porposal made with respected research topic:</strong> {{ f_status.funded_projects }}
+        <li><strong> Proposals submitted relating to the research topic:</strong>
         </li>
 
         <table>
             <tr>
                 <th>Sl.No</th>
                 <th>Title</th>
-                <th>Duration</th>
+                <th>Funding Sought</th>
+                <th>Funding agency</th>
+                <th>Submitted Date</th>
+                <th>Status</th>
             </tr>
             {% for j in f_status.fundedprojectstable_set.all %}
                 <tr>
                     <td> {{ forloop.counter }} </td>
                     <td> {{ j.title }} </td>
-                    <td> {{ j.duration }} </td>
+                    <td> {{ j.funding_sought }} </td>
+                    <td> {{ j.funding_agency }} </td>
+                    <td> {{ j.sumitted_date }} </td>
+                    <td> {{ j.status }} </td>
                 </tr>
             {% endfor %}
         </table>
