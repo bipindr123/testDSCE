@@ -2,12 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import publication
 
-all_publications = publication.objects.all()
+all_publications = publication.objects.all()[:30]
 
 # Create your views here.
 def index(request):
     global all_publications
-    all_publications = publication.objects.all()
+    all_publications = publication.objects.all()[:30]
     total = all_publications.count()
     context = {
         'all_publications': all_publications,

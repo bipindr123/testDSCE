@@ -10,8 +10,8 @@ class Project(models.Model):
     funding_agency = models.CharField("Funding Agency",max_length=50)
     pi_designation = models.CharField("PI and Designation",max_length=50)
     co_pi_designation = models.CharField("Co-PI and Designation",max_length=50)
-    start_date = models.DateField("Start Date")
-    end_date = models.DateField("End Date")
+    start_date = models.DateField("Start Date", blank=True, null=True)
+    end_date = models.DateField("End Date", blank=True, null=True)
     amount_sactioned = models.IntegerField("Amount Sanctioned")
 
 

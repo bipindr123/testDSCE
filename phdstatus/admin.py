@@ -35,7 +35,7 @@ class FundedProjectsTableInline(admin.TabularInline):
 class PhdstatusAdmin(admin.ModelAdmin):
     radio_fields = {"synopsys": admin.HORIZONTAL}
     fields = (
-        'name','synopsys', 'dept', 'guide', 'uni', 'year', 'other')
+        'name','status','synopsys', 'dept', 'guide', 'uni', 'year', 'other')
 
     inlines = [WorkStatusTableInline,ComprehensiveTableInline,WorkshopsTableInline,TrainingTableInline,FundedProjectsTableInline]
 

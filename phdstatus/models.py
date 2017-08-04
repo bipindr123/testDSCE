@@ -6,11 +6,11 @@ class PhdStatus(models.Model):
     dept = models.CharField("Department", max_length=200)
     guide = models.CharField("Guide", max_length=200)
     uni = models.CharField("University where registered", max_length=200)
-    synopsys = models.CharField(max_length=50,choices=[('approved','approved'),('not approved','not approved')])
+    synopsys = models.CharField(max_length=50, choices=[('approved', 'approved'), ('not approved', 'not approved')])
     year = models.DateField("year of registration")
     status = models.CharField("status", max_length=50,
-                              choices=[('Completed', 'Completed'), ('Not Completed', 'Not Completed')])
-    other = models.TextField("Any other details")
+                              choices=[('Completed', 'Completed'), ('OnGoing', 'OnGoing')])
+    other = models.TextField("Any other details", blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Ph.D Status"
@@ -22,7 +22,7 @@ class PhdStatus(models.Model):
 class WorkStatusTable(models.Model):
     phdstatus = models.ForeignKey(PhdStatus, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField("title", max_length=100, blank=True, null=True)
-    status = models.CharField("status",max_length=50, choices=[('Yes', 'yes'), ('No', 'no')])
+    status = models.CharField("status", max_length=50, choices=[('Yes', 'yes'), ('No', 'no')])
 
     class Meta:
         verbose_name_plural = "Course Work Status"
@@ -30,10 +30,12 @@ class WorkStatusTable(models.Model):
     def __str__(self):
         return self.title
 
+
 class ComprehensiveTable(models.Model):
-    phdstatus = models.ForeignKey(PhdStatus, on_delete=models.CASCADE, blank=True, null=True)
-    title = models.CharField("title", max_length=100, blank=True, null=True)
-    status = models.CharField("status", max_length=50, choices=[('Completed', 'Completed'), ('Not Completed', 'Not Completed')])
+    phdstatus = models.OneToOneField(PhdStatus, blank=True, null=True)
+    title = models.CharField("title", max_length=300, blank=True, null=True)
+    status = models.CharField("status", max_length=50,
+                              choices=[('Completed', 'Completed'), ('Not Completed', 'Not Completed')])
 
     class Meta:
         verbose_name_plural = "Comprehensive viva voce"
@@ -45,9 +47,9 @@ class ComprehensiveTable(models.Model):
 
 class WorkshopsTable(models.Model):
     phdstatus = models.ForeignKey(PhdStatus, on_delete=models.CASCADE, blank=True, null=True)
-    title = models.CharField("title", max_length=100, blank=True, null=True)
-    duration = models.CharField("Duration(Days)", max_length=100, blank=True, null=True)
-    details = models.CharField("Details", max_length=100, blank=True,null=True)
+    title = models.CharField("title", max_length=300, blank=True, null=True)
+    duration = models.IntegerField("Duration(Days)", blank=True, null=True)
+    details = models.CharField("Details", max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Workshops/seminar/conference attended"
@@ -58,9 +60,9 @@ class WorkshopsTable(models.Model):
 
 class TrainingTable(models.Model):
     phdstatus = models.ForeignKey(PhdStatus, on_delete=models.CASCADE, blank=True, null=True)
-    title = models.CharField("title", max_length=100, blank=True, null=True)
-    duration = models.CharField("Duration(Days)", max_length=100, blank=True, null=True)
-    details = models.CharField("Details", max_length=100, blank=True, null=True)
+    title = models.CharField("title", max_length=300, blank=True, null=True)
+    duration = models.IntegerField("Duration(Days)", blank=True, null=True)
+    details = models.CharField("Details", max_length=300, blank=True, null=True)
 
     class Meta:
         verbose_name = "Any other training"
@@ -71,8 +73,8 @@ class TrainingTable(models.Model):
 
 class FundedProjectsTable(models.Model):
     phdstatus = models.ForeignKey(PhdStatus, on_delete=models.CASCADE, blank=True, null=True)
-    title = models.CharField("title", max_length=100, blank=True, null=True)
-    funding_sought = models.IntegerField("Funding sought",blank=True, null=True)
+    title = models.CharField("title", max_length=300, blank=True, null=True)
+    funding_sought = models.IntegerField("Funding sought", blank=True, null=True)
     funding_agency = models.CharField("Funding Agency", max_length=50, blank=True, null=True)
     submitted_date = models.DateField("Submitted Date", blank=True, null=True)
     status = models.CharField("status", max_length=50,
