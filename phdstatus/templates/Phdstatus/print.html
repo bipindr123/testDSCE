@@ -113,32 +113,30 @@
                 </tr>
             {% endfor %}
         </table>
-        {% if f_status.status == "Completed" %}
-            <br>
-            <li><strong> Proposals submitted relating to the research topic:</strong>
-            </li>
+        <br>
+        <li><strong> Proposals submitted relating to the research topic:</strong>
+        </li>
 
-            <table>
+        <table>
+            <tr>
+                <th>Sl.No</th>
+                <th>Title</th>
+                <th>Funding Sought</th>
+                <th>Funding agency</th>
+                <th>Submitted Date</th>
+                <th>Status</th>
+            </tr>
+            {% for j in f_status.fundedprojectstable_set.all %}
                 <tr>
-                    <th>Sl.No</th>
-                    <th>Title</th>
-                    <th>Funding Sought</th>
-                    <th>Funding agency</th>
-                    <th>Submitted Date</th>
-                    <th>Status</th>
+                    <td> {{ forloop.counter }} </td>
+                    <td> {{ j.title }} </td>
+                    <td> {{ j.funding_sought }} </td>
+                    <td> {{ j.funding_agency }} </td>
+                    <td> {{ j.sumitted_date }} </td>
+                    <td> {{ j.status }} </td>
                 </tr>
-                {% for j in f_status.fundedprojectstable_set.all %}
-                    <tr>
-                        <td> {{ forloop.counter }} </td>
-                        <td> {{ j.title }} </td>
-                        <td> {{ j.funding_sought }} </td>
-                        <td> {{ j.funding_agency }} </td>
-                        <td> {{ j.sumitted_date }} </td>
-                        <td> {{ j.status }} </td>
-                    </tr>
-                {% endfor %}
-            </table>
-        {% endif %}
+            {% endfor %}
+        </table>
         <br>
         <li><strong> Any other details:</strong> {{ f_status.other }}</li>
     </ul>

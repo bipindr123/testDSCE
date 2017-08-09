@@ -100,7 +100,6 @@
             <thead>
             <tr>
                 <th>Sl.</th>
-                <th>Title</th>
                 <th>Funding Agency</th>
                 <th>Status</th>
                 <th>PI and Designation</th>
@@ -115,7 +114,6 @@
             {% for i in all_projects %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ i.title }}</td>
                     <td>{{ i.funding_agency }}</td>
                     <td>{{ i.status }}</td>
                     <td>{{ i.pi_designation }}</td>
@@ -136,6 +134,9 @@
     <br>
     <br>
 {% endif %}
+<button type="button" class="btn btn-warning" onclick=" window.location.href='/publications/print'">
+    PRINT
+</button>
 <br>
 <br>
 <br>
