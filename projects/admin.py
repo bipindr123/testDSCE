@@ -1,10 +1,14 @@
 from django.contrib import admin
-from projects.models import Project
+from projects.models import FundedProject,Proposal
 
 
 # Register your models here.
 admin.site.site_header = 'DSCE Research Management Administration'
-class ProjectAdmin(admin.ModelAdmin):
+class FundedProjectAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Project, ProjectAdmin)
+class ProposalAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(FundedProject, FundedProjectAdmin)
+admin.site.register(Proposal, ProposalAdmin)
