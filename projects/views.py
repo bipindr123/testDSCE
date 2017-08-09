@@ -8,6 +8,7 @@ all_proposals = Proposal.objects.all()
 
 def index(request):
     pass
+
 def projects(request):
     global all_projects
     all_projects = FundedProject.objects.all()
@@ -54,7 +55,7 @@ def proposals(request):
         'all_proposals': all_proposals,
         'total': total,
     }
-    return render(request, 'projects/index.html', context)
+    return render(request, 'projects/index2.html', context)
 
 
 def search_proposals(request):
@@ -68,21 +69,21 @@ def search_proposals(request):
         search_year = request.GET.get('search_param2', None)
 
         if (search_year == ''):
-            all_projects = Proposal.objects.filter(
+            all_proposals = Proposal.objects.filter(
                 title__contains=search_query).__or__(Proposal.objects.filter(pi_designation__contains=search_query)).filter(
                 dept__contains=search_dept)
         else:
-            all_projects = Proposal.objects.filter(
+            all_proposals = Proposal.objects.filter(
                 title__contains=search_query).__or__(Proposal.objects.filter(pi_designation__contains=search_query)).filter(
                 dept__contains=search_dept,start_date__year=search_year)
         # Do whatever you need with the word the user looked for
         # Your code
-        total = all_projects.count()
+        total = all_proposals.count()
         context = {
-            'all_projects': all_projects,
+            'all_proposals': all_proposals,
             'total': total,
         }
-    return render(request, 'projects/index.html', context)
+    return render(request, 'projects/index2.html', context)
 
 
 

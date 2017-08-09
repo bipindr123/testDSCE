@@ -1,0 +1,28 @@
+I had this really small problem today. I wanted to migrate one of my small django apps to use postgres, just to make everything easy to manage. Sqlite3 is perfectly fine for the amount of load, however I am really much faster at administering postgres than I am on sqlite3. So I decided to migrate the stuff over.
+
+I tried a few approaches, but what ultimately worked the best and the fastest fo rmy particular problem was to do the following.
+
+Use original SQLITE3 connection in settings.py
+1. python manage.py dumpdata > dump.json
+
+(I read some things here about some options you can pass, at the end what just worked was the following)
+
+2. Change DB connection string in settings.py to POSTGRES
+3. python manage.py migrate - Answer no to everything
+4. python manage.py loaddata data.json - Big FAIL something about duplicate values.
+
+5. login to postgres db using psql
+6. execute this to delete all the data in the content_types table 
+   truncate django_content_type RESTART IDENTITY CASCADE;
+
+7. python manage.py loaddata data.json
+8. =)
+
+This will work for pretty much any datasource.
+
+Your mileage may vary but it was a quick hack and it solved my problem very quickly.
+
+Good luck.
+
+to run cli
+heroku pg:psql
