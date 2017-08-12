@@ -75,7 +75,7 @@ def search_proposals(request):
         else:
             all_proposals = Proposal.objects.filter(
                 title__contains=search_query).__or__(Proposal.objects.filter(pi_designation__contains=search_query)).filter(
-                dept__contains=search_dept,start_date__year=search_year)
+                dept__contains=search_dept,submission_date__year=search_year)
         # Do whatever you need with the word the user looked for
         # Your code
         total = all_proposals.count()
