@@ -13,7 +13,8 @@ class FundedProject(models.Model):
     co_pi_designation = models.CharField("Co-PI and Designation",max_length=100, blank = True, null = True)
     start_date = models.DateField("Start Date", blank=True, null=True)
     end_date = models.DateField("End Date", blank=True, null=True)
-    amount_sactioned = models.CharField("Amount Sanctioned",max_length=50)
+    amount_sactioned = models.IntegerField("Amount Sanctioned",max_length=50)
+
 
 
     class Meta:
