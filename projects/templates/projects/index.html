@@ -91,7 +91,9 @@
 <a href="/projects/fundedprojects">
     <h3>Funded Projects</h3>
 </a>
+{% load humanize %}
 <span class="label label-default">Total number of Projects: {{ total }}</span>
+<span class="label label-default">Total Funded Amount: Rs. {{ total_amount.amount_sactioned__sum |intcomma}}</span>
 <br>
 <br>
 {% if all_projects %}
@@ -123,7 +125,7 @@
                     <td>{{ i.dept }}</td>
                     <td>{{ i.start_date }}</td>
                     <td>{{ i.end_date }}</td>
-                    <td>{{ i.amount_sactioned }}</td>
+                    <td>{{ i.amount_sactioned |intcomma}}</td>
 
                 </tr>
             {% endfor %}

@@ -92,6 +92,9 @@
     <h3>Proposals</h3>
 </a>
 <span class="label label-default">Total number of proposals: {{ total }}</span>
+{% load humanize %}
+<span class="label label-default">Total Funded Amount: Rs. {{ total_amount.amount_applied__sum | intcomma }}</span>
+
 <br>
 <br>
 {% if all_proposals %}
@@ -119,7 +122,8 @@
                     <td>{{ i.co_pi_designation }}</td>
                     <td>{{ i.dept }}</td>
                     <td>{{ i.submission_date }}</td>
-                    <td>{{ i.amount_applied }}</td>
+                    {% load l10n %}
+                    <td>{{ i.amount_applied | intcomma }}</td>
 
                 </tr>
             {% endfor %}
