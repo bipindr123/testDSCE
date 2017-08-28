@@ -56,7 +56,7 @@ def proposals(request):
     global all_proposals
     all_proposals = Proposal.objects.all()
     total = all_proposals.count()
-    total_amount = all_proposals.aggregate(Avg('amount_applied'))
+    total_amount = all_proposals.aggregate(Sum('amount_applied'))
     context = {
         'all_proposals': all_proposals,
         'total': total,
