@@ -56,7 +56,7 @@ def proposals(request):
     global all_proposals
     all_proposals = Proposal.objects.all()
     total = all_proposals.count()
-    total_amount = all_proposals.aggregate(Sum('amount_applied'))
+    total_amount = all_proposals.aggregate(Sum('p_amount_applied'))
     context = {
         'all_proposals': all_proposals,
         'total': total,
@@ -86,7 +86,7 @@ def search_proposals(request):
         # Do whatever you need with the word the user looked for
         # Your code
         total = all_proposals.count()
-        total_amount = all_proposals.aggregate(Sum('amount_applied'))
+        total_amount = all_proposals.aggregate(Sum('p_amount_applied'))
         context = {
             'all_proposals': all_proposals,
             'total': total,

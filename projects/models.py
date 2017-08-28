@@ -30,7 +30,7 @@ class Proposal(models.Model):
     pi_designation = models.CharField("PI and Designation",max_length=100)
     co_pi_designation = models.CharField("Co-PI and Designation",max_length=100, blank = True, null = True)
     submission_date = models.DateField("Submission Date")
-    amount_applied = models.IntegerField("Amount Applied")
+    p_amount_applied = models.IntegerField("Amount Applied")
 
 
     class Meta:
